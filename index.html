@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<!--Made 2 seperate rooms. Use CSS to hide Game Dashboard until the button is clicked-->
+<!--Made seperate rooms. Use CSS to hide Game Dashboard until the button is clicked-->
 
 <body>
   <!--Title Menu-->
@@ -25,11 +25,21 @@
     <button id="start-btn">START MISSION</button>  <!--Clickable button and named start-btn to attach behavior-->
    </div>
   
-   <!--Game Dashboard-->
-  <div id="game-screen" class="hidden">
+   <!--Loading Screen-->
+  <div id="loading-screen" class="hidden">
+    <!-- <h2>Zena</h2>
+    <p>Hey Rookie! You should have landed on Mars by now. I'm watching your base from NASA headquarters here on Earth. </p>
+    <p>Since radio messages take 3-22 minutes to reach you, if an emergency hits you can not rely on me. </p>
+    <p>You are the boss out there, so keep your crew safe.</p> -->
+    <button id="command-btn">GO TO COMMAND CENTER</button> 
+  </div>
+
+  <!--Command Center-->
+  <div id="command-page" class="hidden">
     <h2>Command Center</h2>
     <p>Oxygen and Power systems will go here</p>
   </div>
+
   <!-- Custom JS, I linked the folders -->
   <script src="game.js"></script>
 </body>

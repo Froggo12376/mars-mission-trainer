@@ -10,7 +10,7 @@
 }
 
 /* Styling of start button to look clickable*/
-#start-btn { 
+#start-btn, button { 
   background-color: #ebeae4af; 
   color: #0b0f19; 
   border: none; /* remove default border */
@@ -21,7 +21,7 @@
   transition: background-color 0.3s; /* smooth background color transition = browser animates any changes to the background color over a span of 0.3 seconds */
 }
 
-#start-btn:hover {
+#start-btn:hover, button:hover {
   background-color: #505fb6; /* darker shade on hover */
 }
 .hidden {
