@@ -1,0 +1,29 @@
+/* title-screen */
+#title-screen {   /* Target ID */
+  height: 100vh; /* forces box  to stretch = fill 100% of screens vertical height */
+  display: flex; /* enables flexbox layout = powerfull tool that makes aligning items super easy*/
+    flex-direction: column; /* makes items stack vertically instead of horizontally */
+    align-items: center; /* centers items horizontally */
+    justify-content: center; /* centers items vertically */
+    background-color: #263353; /* dark background for space theme */
+    color: #fdf9be; /* bright text color for contrast */
+}
+
+/* Styling of start button to look clickable*/
+#start-btn { 
+  background-color: #ebeae4af; 
+  color: #0b0f19; 
+  border: none; /* remove default border */
+  border-radius: 5px; /* rounded corners */
+  padding: 12px 24px; /* add some padding= vertical space(top n bottom), horizontal space(left n right) */
+  font-size: 16px; /* increase font size */
+  cursor: pointer; /* change cursor to pointer */
+  transition: background-color 0.3s; /* smooth background color transition = browser animates any changes to the background color over a span of 0.3 seconds */
+}
+
+#start-btn:hover {
+  background-color: #505fb6; /* darker shade on hover */
+}
+.hidden {
+  display: none; /* hide elements with this class */
+}
