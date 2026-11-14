@@ -25,5 +25,6 @@
   background-color: #505fb6; /* darker shade on hover */
 }
 .hidden {
-  display: none; /* hide elements with this class */
+  display: none !important; /* hide elements with this class */
 }
+
