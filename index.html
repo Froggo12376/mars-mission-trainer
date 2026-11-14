@@ -42,5 +42,20 @@
 
   <!-- Custom JS, I linked the folders -->
   <script src="game.js"></script>
+  <script>
+    async function getData() {
+      const url = 'https://ccmc.gsfc.nasa.gov/DONKI-API/get/notifications?type=ALL';
+      
+      try {
+        const api = await fetch(url); // Save API object
+        const data = await api.json(); // Save parsed data
+        console.log(data);
+        return data; // Return data 
+      } catch (error) {
+        console.error('Error al hacer fetch:', error);
+      }
+    }
+    getData();
+  </script>
 </body>
 </html>
