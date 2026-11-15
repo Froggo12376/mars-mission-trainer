@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function triggerDay2CommsCrisis() {
     triggerEmergency(
       'Station - Earth communication relay dish is misaligned!',
-      "Climb Tower to Adjust (-20% Radiation)",
+      "Climb Tower to Adjust (+20% Radiation)",
       "Recalibrate Dish Remotely (-15% Power)",
       function() {
         gameStats.radiation += 20;
