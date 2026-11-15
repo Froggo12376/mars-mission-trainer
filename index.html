@@ -1,120 +1,67 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Junior Astronaut Mission Trainer</title>
-    <style>
-      img {
-        width: 100vh; 
-        border-radius: 10px;
-      }
-    </style>
-    <!-- Custom CSS, I linked the foldersL: Put CSS link first so that it loads befoe JS. This way smooth run :D-->
     <link rel="stylesheet" href="style.css">
 </head>
-
-<!--Made seperate rooms. Use CSS to hide Game Dashboard until the button is clicked-->
-
 <body>
-  <!--Title Menu-->
+
+  <!-- Title Menu -->
   <div id="title-screen">
-    <img src="images/mars-title.png" alt="Mars Mission Title Art">
+    <img src="images/mars-title.png" alt="Mars Mission Title Art" style="width: 300px; border-radius: 10px;">
     <h1>Mars Outpost</h1>
     <p>Space Cadet Junior</p>
-    <button id="start-btn">START MISSION</button>  <!--Clickable button and named start-btn to attach behavior-->
+    <button id="start-btn">START MISSION</button>
    </div>
-  
-   <!--Loading Screen-->
+   
+   <!-- Loading Screen -->
   <div id="loading-screen" class="hidden">
-
-    <!--Image + Dialogue box-->
     <div class="loading-container">
-      <div class="loading-bar"></div>
-    <!-- <img src="images/Loading Screen.png" alt="Loading Screen"> -->
-
-    <!--Dialogue Box-->
-    <div id="dialogue-box">
-      <h1>Zena</h1>
-      <p>Hey Rookie! You should have landed on Mars by now. </p>
-      <p>I'm watching your base from NASA headquarters here on Earth. </p>
-      <p>Since radio messages take 3-22 minutes to reach you, </p>
-      <p>if an emergency hits you can not rely on me. </p>
-      <p>You are the boss out there, so keep your crew safe.</p> 
+      <div id="dialogue-box">
+        <h1>Zena</h1>
+        <p>Hey Rookie! You should have landed on Mars by now. </p>
+        <p>I'm watching your base from NASA headquarters here on Earth. </p>
+        <p>Since radio messages take 3-22 minutes to reach you, </p>
+        <p>if an emergency hits you can not rely on me. </p>
+        <p>You are the boss out there, so keep your crew safe.</p> 
+      </div>
     </div>
+    <button id="command-btn">GO TO COMMAND CENTER</button> 
   </div>
-  <button id="command-btn">GO TO COMMAND CENTER</button> 
-</div>
-  <!--Command Center-->
-  <div id="command-page" class="hidden">
 
+  <!-- Command Center -->
+  <div id="command-page" class="hidden">
     <header class="dashboard-header">
       <h1>Mars Outpost</h1>
-      <p>Welcome to the Command Center, Space Cadet!: <span id="cadet-name">[Your Name]</span></p>
-      <p>Mission Status: <span id="mission-status">[Status]</span></p>
+      <p>Welcome to the Command Center, Space Cadet: <span id="cadet-name">Junior</span></p>
+      <p>Mission Status: <span id="mission-status">Active</span></p>
     </header>
 
-    <!-- Resource Meters -->
-     <div class="resource-panel"></div>
+    <!-- Resource Meters (Fixed HTML structure and unique IDs) -->
+    <div class="resource-panel">
       <div class="resource-card">
-        <span>OXYGEN: <span id="power-text">100%</span></span>
-        </div>
-        <div class="resource-card">
-            <span>POWER: <span id="power-text">100%</span></span>
-          </div>
-        </div>
+        <span>OXYGEN: <span id="oxygen-text">100%</span></span>
+      </div>
+      <div class="resource-card">
+        <span>POWER: <span id="power-text">100%</span></span>
+      </div>
+    </div>
     
-<!-- Retro Event Terminal -->
+    <!-- Retro Event Terminal -->
     <div class="terminal-box">
       <h3>MISSION LOG</h3>
       <p id="event-text">Connecting to NASA telemetry network...</p>
       
-      <!-- Choice Container (Hidden by default until a crisis triggers) -->
+      <!-- Choice Container -->
       <div id="choice-container" class="hidden">
         <button id="choice-a-btn" class="choice-btn">Option A</button>
         <button id="choice-b-btn" class="choice-btn">Option B</button>
       </div>
     </div>
-
   </div>
 
-  <!-- Custom JS, I linked the folders -->
   <script src="game.js"></script>
-
-  <!-- NASA DONKI API Call -->
-  <script>
-    async function getData() {
-      const url = 'https://ccmc.gsfc.nasa.gov/DONKI-API/get/notifications?type=ALL';
-      
-      
-      try {
-        const api = await fetch(url); // Save API object
-        const data = await api.json(); // Save parsed data
-        console.log(data);
-        return data; // Return data 
-      } catch (error) {
-        console.error('Error al hacer fetch:', error);
-      }
-    }
-    getData();
-  </script>
-
-  <!-- Gemini code for API dont worry about it -->
-
-  <div class="container">
-        <h1>Space Weather Live Updates (DONKI)</h1>
-        <button id="fetch-btn">Refresh Updates</button>
-        
-        <div id="loading" class="hidden">Loading updates...</div>
-        <div id="updates-container"></div>
-    </div>
-
-    <script src="game.js"></script>
-
-
-
 </body>
 </html>
