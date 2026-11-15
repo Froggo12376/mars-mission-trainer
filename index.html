@@ -47,8 +47,35 @@
 </div>
   <!--Command Center-->
   <div id="command-page" class="hidden">
-    <h2>Command Center</h2>
-    <p>Oxygen and Power systems will go here</p>
+
+    <header class="dashboard-header">
+      <h1>Mars Outpost</h1>
+      <p>Welcome to the Command Center, Space Cadet!: <span id="cadet-name">[Your Name]</span></p>
+      <p>Mission Status: <span id="mission-status">[Status]</span></p>
+    </header>
+
+    <!-- Resource Meters -->
+     <div class="resource-panel"></div>
+      <div class="resource-card">
+        <span>OXYGEN: <span id="power-text">100%</span></span>
+        </div>
+        <div class="resource-card">
+            <span>POWER: <span id="power-text">100%</span></span>
+          </div>
+        </div>
+    
+<!-- Retro Event Terminal -->
+    <div class="terminal-box">
+      <h3>MISSION LOG</h3>
+      <p id="event-text">Connecting to NASA telemetry network...</p>
+      
+      <!-- Choice Container (Hidden by default until a crisis triggers) -->
+      <div id="choice-container" class="hidden">
+        <button id="choice-a-btn" class="choice-btn">Option A</button>
+        <button id="choice-b-btn" class="choice-btn">Option B</button>
+      </div>
+    </div>
+
   </div>
 
   <!-- Custom JS, I linked the folders -->
@@ -58,6 +85,7 @@
   <script>
     async function getData() {
       const url = 'https://ccmc.gsfc.nasa.gov/DONKI-API/get/notifications?type=ALL';
+      
       
       try {
         const api = await fetch(url); // Save API object

@@ -19,3 +19,8 @@ commandCenterButton.addEventListener("click", function () { //tells browser to w
   loadingScreen.classList.add("hidden"); //adds the hidden class to the titleScreen element
   commandCenterScreen.classList.remove("hidden"); //removes the hidden class from the gameScreen element, making it visible
 });
+
+//Fetch API data and display it on the command center screen
+checkMarsWeather();
+
+
