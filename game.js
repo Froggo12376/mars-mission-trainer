@@ -89,4 +89,6 @@ function triggerEmergency(emergencyMessage, choiceAText, choiceBText, callbackA,
     choiceContainer.classList.add("hidden");
     callbackB();
   };
+
 }
+
