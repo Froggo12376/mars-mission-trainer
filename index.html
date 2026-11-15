@@ -78,6 +78,16 @@
         <button id="close-def-btn" class="choice-btn" style="padding: 5px 15px; font-size: 0.8rem;">Close</button>
       </div>
 
+
+<!-- Game Over / Failure Modal -->
+      <div id="game-over-modal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10000;">
+        <div style="background: #1e293b; border: 3px solid #f43f5e; padding: 30px; border-radius: 12px; text-align: center; max-width: 400px; width: 90%;">
+          <h2 style="color: #f43f5e; margin-top: 0; font-size: 2rem;">🚨 MISSION FAILED 🚨</h2>
+          <p id="game-over-reason" style="color: #cbd5e1; font-size: 1.1rem; margin-bottom: 20px;">Your radiation exposure levels exceeded safe limits.</p>
+          <button id="restart-btn" class="choice-btn" style="background: #f43f5e; width: 100%; font-size: 1.1rem;">RETRY MISSION</button>
+        </div>
+      </div>
+
   <script src="game.js"></script>
 </body>
 </html>

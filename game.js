@@ -312,3 +312,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+// --- UPDATE UI & CHECK FAIL CONDITIONS ---
+  function updateResourceDisplay() {
+    const oxyEl = document.getElementById("oxygen-text");
+    const powEl = document.getElementById("power-text");
+    const radEl = document.getElementById("radiation-text");
+
+    if (oxyEl) oxyEl.innerText = gameStats.oxygen + "%";
+    if (powEl) powEl.innerText = gameStats.power + "%";
+    if (radEl) radEl.innerText = gameStats.radiation + "%";
+
+    document.getElementById("day-display").innerText = `DAY ${currentDay}: Crisis ${crisisStep} of 3`;
+
+    // --- FAIL CONDITION CHECKS ---
+    if (gameStats.radiation >= 100) {
+      triggerGameOver("Radiation levels reached 100%! The habitat became too radioactive for the crew.");
+    } else if (gameStats.oxygen <= 0) {
+      triggerGameOver("Oxygen reserves depleted to 0%! The crew ran out of breathable air.");
+    } else if (gameStats.power <= 0) {
+      triggerGameOver("Power grid completely failed! The base froze in the Martian night.");
+    }
+  }
+
+  // --- GAME OVER HANDLER ---
+  function triggerGameOver(reasonText) {
+    const gameOverModal = document.getElementById("game-over-modal");
+    const reasonEl = document.getElementById("game-over-reason");
+    const restartBtn = document.getElementById("restart-btn");
+
+    if (reasonEl) reasonEl.innerText = reasonText;
+    if (gameOverModal) {
+      gameOverModal.style.display = "flex"; // Forces it to show instantly!
+    }
+
+    if (restartBtn) {
+      restartBtn.onclick = function() {
+        location.reload(); // Resets the game
+      };
+    }
+  }
