@@ -1,124 +1,141 @@
 /* title-screen */
-#title-screen {   /* Target ID */
-    height: 100vh; /* forces box  to stretch = fill 100% of screens vertical height */
-    display: flex; /* enables flexbox layout = powerfull tool that makes aligning items super easy*/
-    flex-direction: column; /* makes items stack vertically instead of horizontally */
-    align-items: center; /* centers items horizontally */
-    justify-content: center; /* centers items vertically */
-    background-color: #263353; /* dark background for space theme */
-    color: #fdf9be; /* bright text color for contrast */
+#title-screen {   
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: #263353; 
+    color: #fdf9be; 
 }
 
-#loading-screen {  /* Target ID */
-    height: 100vh; /* forces box  to stretch = fill 100% of screens vertical height */
-    display: flex; /* enables flexbox layout = powerfull tool that makes aligning items super easy*/
-    flex-direction: column; /* makes items stack vertically instead of horizontally */
-    align-items: center; /* centers items horizontally */
-    justify-content: center; /* centers items vertically */
-    background-color: #263353; /* dark background for space theme */
-    color: #4e2268; /* bright text color for contrast */
+#loading-screen {  
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: #263353; 
+    color: #4e2268; 
 }
 
-/* Styling for the loading PNG */
-#loading-container {
-    position: relative; /* allows for absolute positioning of child elements */
-    width: 100%; 
-    max-width: 800px;
-}
-
-/* here stands absolutly nothing */
-
-#command-btn {
-  margin-top: 10px;
-  background-color: #ebeae4af; 
-  color: #0b0f19; 
-  border: none; 
-  border-radius: 5px; 
-  padding: 10px 20px; 
-  font-size: 14px; 
-  cursor: pointer; 
-}
-
-#command-btn:hover {
-  background-color: #505fb6; 
-}
-
-/* Styling of start button to look clickable*/
-#start-btn, button { 
-  background-color: #ebeae4af; 
-  color: #0b0f19; 
-  border: none; /* remove default border */
-  border-radius: 5px; /* rounded corners */
-  padding: 12px 24px; /* add some padding= vertical space(top n bottom), horizontal space(left n right) */
-  font-size: 16px; /* increase font size */
-  cursor: pointer; /* change cursor to pointer */
-  transition: background-color 0.3s; /* smooth background color transition = browser animates any changes to the background color over a span of 0.3 seconds */
-}
-
-#start-btn:hover, button:hover {
-  background-color: #505fb6; /* darker shade on hover */
-}
-.hidden {
-  display: none !important; /* hide elements with this class */
-}
-
+/* Styling for the loading container & retro art frame */
 .loading-container {
-  position: relative;
-  aspect-ratio: 1000 / 800; 
-  width: min(90vw, 800px); /* Scales without overflow */
-  margin: 0 auto;
-  
-  background-image: url('images/Loading Screen.png');
-  background-size: contain; 
-  background-repeat: no-repeat;
+    position: relative;
+    aspect-ratio: 1000 / 800; 
+    width: min(90vw, 800px); 
+    margin: 0 auto;
+    background-image: url('images/Loading Screen.png');
+    background-size: contain; 
+    background-repeat: no-repeat;
 }
 
 #dialogue-box {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  width: 65%; 
-  height: 28%;
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    width: 65%; 
+    height: 28%;
+    color: #fdf9be;
 }
 
-p {
-  margin: 5px;
+#dialogue-box h1 {
+    font-size: 16px;
+    margin: 0 0 5px 0;
 }
 
+#dialogue-box p {
+    font-size: 12px;
+    margin: 3px 0;
+    line-height: 1.2;
+}
+
+#command-btn {
+    margin-top: 15px;
+    background-color: #ebeae4af; 
+    color: #0b0f19; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    font-size: 14px; 
+    cursor: pointer; 
+}
+
+#command-btn:hover {
+    background-color: #505fb6; 
+}
+
+/* General Buttons */
+#start-btn, button { 
+    background-color: #ebeae4af; 
+    color: #0b0f19; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 12px 24px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+#start-btn:hover, button:hover {
+    background-color: #505fb6; 
+}
+
+.hidden {
+    display: none !important; 
+}
 
 /* Command Center Screen */
 #command-page {
-  height: 100vh; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  background-color: #263353; 
-  color: #fdf9be; 
-  font-family: monospace;
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: #263353; 
+    color: #fdf9be; 
+    font-family: monospace;
 }
 
-.resource-panel{
-  display: flex; 
-  gap: 20px; 
-  margin-bottom: 20px; 
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.resource-panel {
+    display: flex; 
+    gap: 20px; 
+    margin-bottom: 20px; 
 }
 
 .resource-card {
-  background-color: #4e2268;
-  padding: 10px 20px; 
-  border: 2px solid #00ffcc;
-   border-radius: 8px; 
+    background-color: #4e2268;
+    padding: 10px 20px; 
+    border: 2px solid #00ffcc;
+    border-radius: 8px; 
+}
+
+.terminal-box {
+    background-color: #0b0f19;
+    border: 3px solid #00ffcc;
+    padding: 20px;
+    width: 600px;
+    max-width: 90%;
+    border-radius: 8px;
+}
+
+.terminal-box h3 {
+    margin-top: 0;
+    color: #00ffcc;
 }
 
 #choice-container {
-  margin-top: 15px;
+    margin-top: 15px;
     display: flex;
     gap: 10px;
 }
 
-.choice-btn
-{
-  background-color: #ff5500; 
-  color: #ffffff; 
+.choice-btn {
+    background-color: #ff5500; 
+    color: #ffffff; 
 }
