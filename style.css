@@ -183,3 +183,37 @@ button:hover {
 .choice-btn:hover {
     background-color: #ff7733;
 }
+
+/* Ego too big confetti */
+.confetti {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  top: -20px;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 2px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Clickable glossary terms inside text */
+.glossary-term {
+  color: #38bdf8;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+.glossary-term:hover {
+  color: #7dd3fc;
+}

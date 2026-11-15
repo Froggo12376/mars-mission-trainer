@@ -35,7 +35,7 @@
   <div id="command-page" class="hidden">
     <header class="dashboard-header">
       <h1>Mars Outpost</h1>
-      <p>Welcome to the Command Center, Space Cadet: <span id="cadet-name">Junior</span></p>
+      <p>Welcome, <span id="cadet-name">Junior</span> | <span id="day-display" style="color: #4ade80; font-weight: bold;">DAY 1: Mission Phase</span></p>
       <p>Mission Status: <span id="mission-status">Active</span></p>
     </header>
 
@@ -70,6 +70,13 @@
       </div>
     </div> 
   </div> 
+
+  <!-- Vocabulary Definition Popup Box -->
+      <div id="def-modal" class="hidden" style="background: rgba(15, 23, 42, 0.95); border: 2px solid #38bdf8; padding: 15px; border-radius: 8px; margin-top: 15px;">
+        <h4 id="def-title" style="color: #38bdf8; margin-top: 0;"></h4>
+        <p id="def-text" style="font-size: 0.9rem; margin-bottom: 10px;"></p>
+        <button id="close-def-btn" class="choice-btn" style="padding: 5px 15px; font-size: 0.8rem;">Close</button>
+      </div>
 
   <script src="game.js"></script>
 </body>

@@ -8,6 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
     radiation: 10,
   };
 
+  let currentDay = 1;
+  let crisisStep = 1; // Tracks crisis 1, 2, 3 per day
+
+  // --- GLOSSARY DICTIONARY (Clickable definitions for kids) ---
+  const glossary = {
+    "solar storm": "A massive burst of energy and radiation from the Sun that can fry electronics and harm astronauts!",
+    "radiation": "Invisible energy rays in space that can make you sick if you don't wear heavy shields.",
+    "airlock": "A sealed room with two doors that lets astronauts go outside without losing the base's air.",
+    "rover": "A robotic car driven or controlled by astronauts to explore the rocky surface of Mars.",
+    "sol": "The word scientists use for a single day on Mars (it's about 39 minutes longer than an Earth day!)."
+  };
+
   // --- UPDATE UI FUNCTION ---
   function updateResourceDisplay() {
     const oxyEl = document.getElementById("oxygen-text");
@@ -17,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (oxyEl) oxyEl.innerText = gameStats.oxygen + "%";
     if (powEl) powEl.innerText = gameStats.power + "%";
     if (radEl) radEl.innerText = gameStats.radiation + "%";
+
+    document.getElementById("day-display").innerText = `DAY ${currentDay}: Crisis ${crisisStep} of 3`;
   }
 
   // --- SCREEN SWITCHING LOGIC ---
@@ -40,93 +54,193 @@ document.addEventListener("DOMContentLoaded", function () {
       if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
 
       updateResourceDisplay();
-      startCrisisLoop();
+      startCurrentDayCrisis();
     });
   }
 
-  // --- CRISIS LOOP SYSTEM ---
-  function startCrisisLoop() {
-    triggerSolarStormCrisis();
+  // --- DAY & CRISIS ROUTER ---
+  function startCurrentDayCrisis() {
+    if (currentDay === 1) {
+      if (crisisStep === 1) triggerSolarStormCrisis();
+      else if (crisisStep === 2) triggerAirlockCrisis();
+      else if (crisisStep === 3) triggerDustStormCrisis();
+    } else if (currentDay === 2) {
+      if (crisisStep === 1) triggerDay2RoverCrisis();
+      else if (crisisStep === 2) triggerDay2MeteorCrisis();
+      else if (crisisStep === 3) triggerDay2CommsCrisis();
+    }
   }
 
-  // --- CRISIS 1: Solar Storm ---
+  // ==========================================
+  // --- DAY 1 CRISES ---
+  // ==========================================
   function triggerSolarStormCrisis() {
     triggerEmergency(
-      "Nasa Alert: Solar storm detected near Mars orbit!",
+      'Nasa Alert: A massive <span class="glossary-term" data-word="solar storm">solar storm</span> is hitting Mars orbit! High <span class="glossary-term" data-word="radiation">radiation</span> incoming!',
       "Shield Habitat (-30% Power)",
-      "Reroute Air Reserves (-10% Oxygen, +30% Radiation)",
-      
-      // Choice A
+      "Reroute Air Scrubbers (-10% Oxygen, +30% Radiation)",
       function() {
         gameStats.power -= 30;
         updateResourceDisplay();
         setEventText("Hab shields locked! Power dropped to " + gameStats.power + "%, but radiation was deflected.");
-        showContinueButton(triggerAirlockCrisis);
+        finishCrisisStep();
       },
-      // Choice B
       function() {
         gameStats.oxygen -= 10;
         gameStats.radiation += 30;
         updateResourceDisplay();
-        setEventText("Air scrubbers maximized. Oxygen: " + gameStats.oxygen + "%, Radiation increased.");
-        showContinueButton(triggerAirlockCrisis);
+        setEventText("Air filters maximized. Oxygen down to " + gameStats.oxygen + "%, radiation increased.");
+        finishCrisisStep();
       }
     );
   }
 
-  // --- CRISIS 2: Airlock Leak ---
   function triggerAirlockCrisis() {
     triggerEmergency(
-      "Maintenance Alert: Habitat airlock seal is leaking pressure!",
-      "Repair Outside (+30% Radiation)",
+      'Maintenance Alert: The main <span class="glossary-term" data-word="airlock">airlock</span> seal is leaking air pressure!',
+      "Repair Outside (+30% Radiation exposure)",
       "Patch from Inside (-20% Oxygen, -20% Power)",
-      
-      // Choice A
       function() {
         gameStats.radiation += 30;
         updateResourceDisplay();
-        setEventText("Airlock repaired outside, but crew took minor radiation exposure.");
-        showContinueButton(triggerRoverCrisis);
+        setEventText("Airlock fixed outside, but crew soaked up extra space radiation.");
+        finishCrisisStep();
       },
-      // Choice B
       function() {
         gameStats.oxygen -= 20;
         gameStats.power -= 20;
         updateResourceDisplay();
-        setEventText("Patched from inside! Resources took a heavy hit.");
-        showContinueButton(triggerRoverCrisis);
+        setEventText("Patched from inside safely, but life support took a heavy hit.");
+        finishCrisisStep();
       }
     );
   }
 
-  // --- CRISIS 3: Rover Breakdown (Loops back or continues) ---
-  function triggerRoverCrisis() {
+  function triggerDustStormCrisis() {
     triggerEmergency(
-      "Science Alert: Dust storm threatening the solar panels!",
+      'Environmental Alert: A planetary dust storm is blocking sunlight from the solar panels!',
       "Clean Panels Manually (+10% Radiation)",
-      "Switch to Reserve Battery (-25% Power)",
-      
-      // Choice A
+      "Switch to Emergency Battery (-25% Power)",
       function() {
         gameStats.radiation += 10;
         updateResourceDisplay();
-        setEventText("Panels wiped clean of dust. Solar generation restored.");
-        showContinueButton(triggerSolarStormCrisis); // Loops back to storm or next event!
+        setEventText("Panels wiped clean during a dangerous spacewalk.");
+        finishDayOneCelebration(); // Day 1 ends here!
       },
-      // Choice B
       function() {
         gameStats.power -= 25;
         updateResourceDisplay();
-        setEventText("Switched to reserve battery successfully.");
-        showContinueButton(triggerSolarStormCrisis); // Loops back
+        setEventText("Ran on backup battery power to ride out the storm.");
+        finishDayOneCelebration(); // Day 1 ends here!
       }
     );
+  }
+
+  // ==========================================
+  // --- DAY 2 CRISES (New Questions!) ---
+  // ==========================================
+  function triggerDay2RoverCrisis() {
+    triggerEmergency(
+      'Science Alert: The exploration <span class="glossary-term" data-word="rover">rover</span> is stuck in a deep Martian crater!',
+      "Send Rescue Drone (-20% Power)",
+      "Guide Crew Remotely (-10% Oxygen)",
+      function() {
+        gameStats.power -= 20;
+        updateResourceDisplay();
+        setEventText("Drone successfully pulled the rover free!");
+        finishCrisisStep();
+      },
+      function() {
+        gameStats.oxygen -= 10;
+        updateResourceDisplay();
+        setEventText("Guided them via radio link. Mission successful!");
+        finishCrisisStep();
+      }
+    );
+  }
+
+  function triggerDay2MeteorCrisis() {
+    triggerEmergency(
+      'Radar Alert: Space debris is hurtling toward the base greenhouse!',
+      "Fire Laser Defense Grid (-30% Power)",
+      "Evacuate Greenhouse Sector (-15% Oxygen)",
+      function() {
+        gameStats.power -= 30;
+        updateResourceDisplay();
+        setEventText("Laser blasted the debris into space dust!");
+        finishCrisisStep();
+      },
+      function() {
+        gameStats.oxygen -= 15;
+        updateResourceDisplay();
+        setEventText("Greenhouse sealed off safely, plants took minor shock.");
+        finishCrisisStep();
+      }
+    );
+  }
+
+  function triggerDay2CommsCrisis() {
+    triggerEmergency(
+      'Station Alert: Earth communication relay dish is misaligned!',
+      "Climb Tower to Adjust (-20% Radiation)",
+      "Recalibrate Dish Remotely (-15% Power)",
+      function() {
+        gameStats.radiation += 20;
+        updateResourceDisplay();
+        setEventText("Dish locked onto Earth signal again!");
+        finishDayTwoCelebration();
+      },
+      function() {
+        gameStats.power -= 15;
+        updateResourceDisplay();
+        setEventText("Remote recalibration successful!");
+        finishDayTwoCelebration();
+      }
+    );
+  }
+
+  // --- PROGRESSION & CELEBRATIONS ---
+  function finishCrisisStep() {
+    crisisStep++;
+    showContinueButton(startCurrentDayCrisis);
+  }
+
+  function finishDayOneCelebration() {
+    setEventText("🎉 **DAY 1 COMPLETE!** You survived your first 3 <span class='glossary-term' data-word='sol'>sols</span> on Mars! Outstanding job, Commander!");
+    triggerConfetti();
+    
+    currentDay = 2;
+    crisisStep = 1;
+    showContinueButton(startCurrentDayCrisis, "START DAY 2");
+  }
+
+  function finishDayTwoCelebration() {
+    setEventText("🏆 **MISSION VICTORY!** You conquered Day 2 and proved you're a master space commander!");
+    triggerConfetti();
+    showContinueButton(() => { location.reload(); }, "PLAY AGAIN");
+  }
+
+// --- EGO TOO BIG CONFETTI EFFECT ---
+  function triggerConfetti() {
+    for (let i = 0; i < 75; i++) {
+      const drop = document.createElement("div");
+      drop.classList.add("confetti");
+      drop.style.left = Math.random() * window.innerWidth + "px";
+      drop.style.backgroundColor = ['#38bdf8', '#f43f5e', '#4ade80', '#fbbf24', '#a855f7', '#ec4899'][Math.floor(Math.random() * 6)];
+      drop.style.animationDuration = (1.5 + Math.random() * 2) + "s";
+      drop.style.animationDelay = (Math.random() * 0.4) + "s";
+      document.body.appendChild(drop);
+      setTimeout(() => drop.remove(), 4000);
+    }
   }
 
   // --- UI HELPER FUNCTIONS ---
   function setEventText(message) {
     const eventTextView = document.getElementById("event-text");
-    if (eventTextView) eventTextView.innerText = message;
+    if (eventTextView) {
+      eventTextView.innerHTML = message;
+      attachGlossaryListeners(); // Make new terms clickable!
+    }
   }
 
   function triggerEmergency(emergencyMessage, choiceAText, choiceBText, callbackA, callbackB) {
@@ -158,16 +272,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function showContinueButton(nextCallback) {
+  function showContinueButton(nextCallback, buttonText = "CONTINUE MISSION") {
     const continueContainer = document.getElementById("continue-container");
     const continueBtn = document.getElementById("continue-btn");
 
     if (continueContainer) continueContainer.classList.remove("hidden");
-
     if (continueBtn) {
+      continueBtn.innerText = buttonText;
       continueBtn.onclick = function() {
         if (continueContainer) continueContainer.classList.add("hidden");
         if (nextCallback) nextCallback();
+      };
+    }
+  }
+
+  // --- GLOSSARY CLICK HANDLERS ---
+  function attachGlossaryListeners() {
+    const terms = document.querySelectorAll(".glossary-term");
+    const defModal = document.getElementById("def-modal");
+    const defTitle = document.getElementById("def-title");
+    const defText = document.getElementById("def-text");
+    const closeBtn = document.getElementById("close-def-btn");
+
+    terms.forEach(term => {
+      term.onclick = function() {
+        const wordKey = term.getAttribute("data-word");
+        if (glossary[wordKey]) {
+          defTitle.innerText = "📖 STEM Glossary: " + term.innerText;
+          defText.innerText = glossary[wordKey];
+          defModal.classList.remove("hidden");
+        }
+      };
+    });
+
+    if (closeBtn) {
+      closeBtn.onclick = function() {
+        defModal.classList.add("hidden");
       };
     }
   }
