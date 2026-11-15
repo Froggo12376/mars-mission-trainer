@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ==========================================
   function triggerSolarStormCrisis() {
     triggerEmergency(
-      'Nasa Alert: A massive <span class="glossary-term" data-word="solar storm">solar storm</span> is hitting Mars orbit! High <span class="glossary-term" data-word="radiation">radiation</span> incoming!',
+      'Nasa - A massive <span class="glossary-term" data-word="solar storm">solar storm</span> is hitting Mars orbit! High <span class="glossary-term" data-word="radiation">radiation</span> incoming!',
       "Shield Habitat (-30% Power)",
       "Reroute Air Scrubbers (-10% Oxygen, +30% Radiation)",
       function() {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function triggerAirlockCrisis() {
     triggerEmergency(
-      'Maintenance Alert: The main <span class="glossary-term" data-word="airlock">airlock</span> seal is leaking air pressure!',
+      'Maintenance - The main <span class="glossary-term" data-word="airlock">airlock</span> seal is leaking air pressure!',
       "Repair Outside (+30% Radiation exposure)",
       "Patch from Inside (-20% Oxygen, -20% Power)",
       function() {
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function triggerDustStormCrisis() {
     triggerEmergency(
-      'Environmental Alert: A planetary dust storm is blocking sunlight from the solar panels!',
+      'Environmental - A planetary dust storm is blocking sunlight from the solar panels!',
       "Clean Panels Manually (+10% Radiation)",
       "Switch to Emergency Battery (-25% Power)",
       function() {
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ==========================================
   function triggerDay2RoverCrisis() {
     triggerEmergency(
-      'Science Alert: The exploration <span class="glossary-term" data-word="rover">rover</span> is stuck in a deep Martian crater!',
+      'Science - The exploration <span class="glossary-term" data-word="rover">rover</span> is stuck in a deep Martian crater!',
       "Send Rescue Drone (-20% Power)",
       "Guide Crew Remotely (-10% Oxygen)",
       function() {
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function triggerDay2MeteorCrisis() {
     triggerEmergency(
-      'Radar Alert: Space debris is hurtling toward the base greenhouse!',
+      'Radar - Space debris is hurtling toward the base greenhouse!',
       "Fire Laser Defense Grid (-30% Power)",
       "Evacuate Greenhouse Sector (-15% Oxygen)",
       function() {
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function triggerDay2CommsCrisis() {
     triggerEmergency(
-      'Station Alert: Earth communication relay dish is misaligned!',
+      'Station - Earth communication relay dish is misaligned!',
       "Climb Tower to Adjust (-20% Radiation)",
       "Recalibrate Dish Remotely (-15% Power)",
       function() {
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function finishDayOneCelebration() {
-    setEventText("🎉 **DAY 1 COMPLETE!** You survived your first 3 <span class='glossary-term' data-word='sol'>sols</span> on Mars! Outstanding job, Commander!");
+    setEventText("🎉 <strong>DAY 1 COMPLETE!</strong> You survived your first 3 <span class='glossary-term' data-word='sol'>sols</span> on Mars! Outstanding job, Commander!");
     triggerConfetti();
     
     currentDay = 2;
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function finishDayTwoCelebration() {
-    setEventText("🏆 **MISSION VICTORY!** You conquered Day 2 and proved you're a master space commander!");
+    setEventText("🏆 <strong>MISSION VICTORY!</strong> You conquered Day 2 and proved you're a master space commander!");
     triggerConfetti();
     showContinueButton(() => { location.reload(); }, "PLAY AGAIN");
   }
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function triggerEmergency(emergencyMessage, choiceAText, choiceBText, callbackA, callbackB) {
-    setEventText("🚨 **CRISIS ALERT:** " + emergencyMessage);
+    setEventText("🚨 <strong>CRISIS ALERT:</strong> " + emergencyMessage);
 
     const choiceContainer = document.getElementById("choice-container");
     const continueContainer = document.getElementById("continue-container");
