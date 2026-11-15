@@ -1,3 +1,17 @@
+// Game Resource Stats //
+let gameStats = {
+  oxygen: 100,
+  power: 100,
+  radiation: 10,
+};
+
+// Update the resource stats on the UI
+function updateResourceDisplay() {
+  document.getElementById("oxygen-text").innerText = gameStats.oxygen + "%";
+  document.getElementById("power-text").innerText = gameStats.power + "%";
+  document.getElementById("radiation-text").innerText = gameStats.radiation + "%";
+}
+
 // --- SCREEN SWITCHING LOGIC ---
 const startButton = document.getElementById("start-btn");
 const titleScreen = document.getElementById("title-screen");
@@ -14,11 +28,13 @@ const commandCenterScreen = document.getElementById("command-page");
 commandCenterButton.addEventListener("click", function () {
   loadingScreen.classList.add("hidden"); 
   commandCenterScreen.classList.remove("hidden");
+
+  updateResourceDisplay();
+  checkMarsWeather();
   
   // Trigger NASA Mars weather check when entering Command Center
   checkMarsWeather();
 });
-
 
 // --- NASA DONKI API & MARS FILTER LOGIC ---
 async function checkMarsWeather() {
@@ -44,27 +60,33 @@ async function checkMarsWeather() {
       }
     }
 
-    if (marsAlert) {
-      triggerEmergency(
-        "NASA Alert: Solar storm detected near Mars orbit!",
-        "Shield Habitat (-30% Power)",
-        "Reroute Air Reserves (-10% Oxygen)",
-        function() { 
-          eventTextView.innerText = "Hab shields locked! Radiation deflected successfully."; 
-        },
-        function() { 
-          eventTextView.innerText = "Air scrubbers maximized. Crew is safe."; 
-        }
-      );
-    } else {
-      eventTextView.innerText = "All systems nominal. No active solar storms threatening Mars.";
-    }
-
-  } catch (error) {
-    console.error('Error fetching NASA data:', error);
-    eventTextView.innerText = "Sensor array offline. Operating on local habitat backup.";
+if (marsAlert) {
+triggerEmergency(
+  "Nasa Alert: Solar storm detected near Mars orbit!",
+  "Shield Habitat (-30% Power)",
+  "Reroute Air Reserves (-10% Oxygen, +30% Radiation)",
+  // Choice A
+  function() {
+    gameStats.power -= 30;
+    updateResourceDisplay();
+    document.getElementById("event-text").innerText = "Hab shields locked! Power dropped to " + gameStats.power + "%, but radiation was deflected.";
+  },
+  // Choice B
+  function() {
+    gameStats.oxygen -= 10;
+    gameStats.radiation += 30;
+    updateResourceDisplay();
+    document.getElementById("event-text").innerText = "Air scrubbers maximized, air purified. Oxygen dropped to " + gameStats.oxygen + "%, and radiation exposure increased.";
   }
+);
+} else {
+  eventTextView.innerText = "All systems normal. No active threats detected near Mars orbit.";
 }
+  } catch (error) {
+    console.error("Error fetching NASA data:", error);
+    eventTextView.innerText = "Error fetching NASA data. Please try again later.";
+  }
+
 
 
 // --- DECISION ENGINE ---
@@ -90,5 +112,4 @@ function triggerEmergency(emergencyMessage, choiceAText, choiceBText, callbackA,
     callbackB();
   };
 
-}
-
+} }
