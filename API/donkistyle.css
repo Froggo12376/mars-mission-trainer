@@ -1,8 +1,46 @@
+/* --- GLOBAL STYLES --- */
+body {
+    background-color: #263353; 
+    color: #fdf9be; 
+    font-size: 20px;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+}
+
+
 .table-striped {
-    background-color: red;
+    background-color: #441b5c; /* Dark red background */
+    color: white;
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-striped td, .table-striped th {
+    padding: 8px;
+    border: 1px solid #270036;
+}
+.bg-info {
+    background: rgb(39, 39, 151);
     color: white;
 }
 
-.bg-info {
-    background: blue;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
