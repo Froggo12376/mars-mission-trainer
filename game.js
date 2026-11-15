@@ -20,7 +20,7 @@ commandCenterButton.addEventListener("click", function () { //tells browser to w
   commandCenterScreen.classList.remove("hidden"); //removes the hidden class from the gameScreen element, making it visible
 });
 
-/* gemini code again*/
+/* bs gemini code again*/
 
 document.getElementById('fetch-btn').addEventListener('click', fetchSpaceWeatherUpdates);
 
