@@ -1,115 +1,174 @@
-// Game Resource Stats //
-let gameStats = {
-  oxygen: 100,
-  power: 100,
-  radiation: 10,
-};
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("Mars Outpost script loaded successfully!");
 
-// Update the resource stats on the UI
-function updateResourceDisplay() {
-  document.getElementById("oxygen-text").innerText = gameStats.oxygen + "%";
-  document.getElementById("power-text").innerText = gameStats.power + "%";
-  document.getElementById("radiation-text").innerText = gameStats.radiation + "%";
-}
+  // --- GAME RESOURCE STATS ---
+  let gameStats = {
+    oxygen: 100,
+    power: 100,
+    radiation: 10,
+  };
 
-// --- SCREEN SWITCHING LOGIC ---
-const startButton = document.getElementById("start-btn");
-const titleScreen = document.getElementById("title-screen");
-const loadingScreen = document.getElementById("loading-screen");
+  // --- UPDATE UI FUNCTION ---
+  function updateResourceDisplay() {
+    const oxyEl = document.getElementById("oxygen-text");
+    const powEl = document.getElementById("power-text");
+    const radEl = document.getElementById("radiation-text");
 
-startButton.addEventListener("click", function () {
-  titleScreen.classList.add("hidden"); 
-  loadingScreen.classList.remove("hidden"); 
-});
+    if (oxyEl) oxyEl.innerText = gameStats.oxygen + "%";
+    if (powEl) powEl.innerText = gameStats.power + "%";
+    if (radEl) radEl.innerText = gameStats.radiation + "%";
+  }
 
-const commandCenterButton = document.getElementById("command-btn");
-const commandCenterScreen = document.getElementById("command-page"); 
+  // --- SCREEN SWITCHING LOGIC ---
+  const startButton = document.getElementById("start-btn");
+  const titleScreen = document.getElementById("title-screen");
+  const loadingScreen = document.getElementById("loading-screen");
 
-commandCenterButton.addEventListener("click", function () {
-  loadingScreen.classList.add("hidden"); 
-  commandCenterScreen.classList.remove("hidden");
+  if (startButton) {
+    startButton.addEventListener("click", function () {
+      if (titleScreen) titleScreen.classList.add("hidden"); 
+      if (loadingScreen) loadingScreen.classList.remove("hidden"); 
+    });
+  }
 
-  updateResourceDisplay();
-  checkMarsWeather();
-  
-  // Trigger NASA Mars weather check when entering Command Center
-  checkMarsWeather();
-});
+  const commandCenterButton = document.getElementById("command-btn");
+  const commandCenterScreen = document.getElementById("command-page"); 
 
-// --- NASA DONKI API & MARS FILTER LOGIC ---
-async function checkMarsWeather() {
-  const url = 'https://ccmc.gsfc.nasa.gov/DONKI-API/get/notifications?type=ALL';
-  const eventTextView = document.getElementById("event-text");
+  if (commandCenterButton) {
+    commandCenterButton.addEventListener("click", function () {
+      if (loadingScreen) loadingScreen.classList.add("hidden"); 
+      if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
 
-  eventTextView.innerText = "Scanning deep-space telemetry from NASA CCMC...";
+      updateResourceDisplay();
+      startCrisisLoop();
+    });
+  }
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Server error: ${response.status}`);
-    }
+  // --- CRISIS LOOP SYSTEM ---
+  function startCrisisLoop() {
+    triggerSolarStormCrisis();
+  }
 
-    const notifications = await response.json();
-
-    // Search for any alert mentioning Mars
-    let marsAlert = null;
-    for (let i = 0; i < notifications.length; i++) {
-      if (notifications[i].messageBody.includes("Mars")) {
-        marsAlert = notifications[i];
-        break;
+  // --- CRISIS 1: Solar Storm ---
+  function triggerSolarStormCrisis() {
+    triggerEmergency(
+      "Nasa Alert: Solar storm detected near Mars orbit!",
+      "Shield Habitat (-30% Power)",
+      "Reroute Air Reserves (-10% Oxygen, +30% Radiation)",
+      
+      // Choice A
+      function() {
+        gameStats.power -= 30;
+        updateResourceDisplay();
+        setEventText("Hab shields locked! Power dropped to " + gameStats.power + "%, but radiation was deflected.");
+        showContinueButton(triggerAirlockCrisis);
+      },
+      // Choice B
+      function() {
+        gameStats.oxygen -= 10;
+        gameStats.radiation += 30;
+        updateResourceDisplay();
+        setEventText("Air scrubbers maximized. Oxygen: " + gameStats.oxygen + "%, Radiation increased.");
+        showContinueButton(triggerAirlockCrisis);
       }
+    );
+  }
+
+  // --- CRISIS 2: Airlock Leak ---
+  function triggerAirlockCrisis() {
+    triggerEmergency(
+      "Maintenance Alert: Habitat airlock seal is leaking pressure!",
+      "Repair Outside (+30% Radiation)",
+      "Patch from Inside (-20% Oxygen, -20% Power)",
+      
+      // Choice A
+      function() {
+        gameStats.radiation += 30;
+        updateResourceDisplay();
+        setEventText("Airlock repaired outside, but crew took minor radiation exposure.");
+        showContinueButton(triggerRoverCrisis);
+      },
+      // Choice B
+      function() {
+        gameStats.oxygen -= 20;
+        gameStats.power -= 20;
+        updateResourceDisplay();
+        setEventText("Patched from inside! Resources took a heavy hit.");
+        showContinueButton(triggerRoverCrisis);
+      }
+    );
+  }
+
+  // --- CRISIS 3: Rover Breakdown (Loops back or continues) ---
+  function triggerRoverCrisis() {
+    triggerEmergency(
+      "Science Alert: Dust storm threatening the solar panels!",
+      "Clean Panels Manually (+10% Radiation)",
+      "Switch to Reserve Battery (-25% Power)",
+      
+      // Choice A
+      function() {
+        gameStats.radiation += 10;
+        updateResourceDisplay();
+        setEventText("Panels wiped clean of dust. Solar generation restored.");
+        showContinueButton(triggerSolarStormCrisis); // Loops back to storm or next event!
+      },
+      // Choice B
+      function() {
+        gameStats.power -= 25;
+        updateResourceDisplay();
+        setEventText("Switched to reserve battery successfully.");
+        showContinueButton(triggerSolarStormCrisis); // Loops back
+      }
+    );
+  }
+
+  // --- UI HELPER FUNCTIONS ---
+  function setEventText(message) {
+    const eventTextView = document.getElementById("event-text");
+    if (eventTextView) eventTextView.innerText = message;
+  }
+
+  function triggerEmergency(emergencyMessage, choiceAText, choiceBText, callbackA, callbackB) {
+    setEventText("🚨 **CRISIS ALERT:** " + emergencyMessage);
+
+    const choiceContainer = document.getElementById("choice-container");
+    const continueContainer = document.getElementById("continue-container");
+    const btnA = document.getElementById("choice-a-btn");
+    const btnB = document.getElementById("choice-b-btn");
+
+    if (continueContainer) continueContainer.classList.add("hidden");
+    if (choiceContainer) choiceContainer.classList.remove("hidden");
+
+    if (btnA) btnA.innerText = choiceAText;
+    if (btnB) btnB.innerText = choiceBText;
+
+    if (btnA) {
+      btnA.onclick = function() {
+        if (choiceContainer) choiceContainer.classList.add("hidden");
+        if (callbackA) callbackA();
+      };
     }
 
-if (marsAlert) {
-triggerEmergency(
-  "Nasa Alert: Solar storm detected near Mars orbit!",
-  "Shield Habitat (-30% Power)",
-  "Reroute Air Reserves (-10% Oxygen, +30% Radiation)",
-  // Choice A
-  function() {
-    gameStats.power -= 30;
-    updateResourceDisplay();
-    document.getElementById("event-text").innerText = "Hab shields locked! Power dropped to " + gameStats.power + "%, but radiation was deflected.";
-  },
-  // Choice B
-  function() {
-    gameStats.oxygen -= 10;
-    gameStats.radiation += 30;
-    updateResourceDisplay();
-    document.getElementById("event-text").innerText = "Air scrubbers maximized, air purified. Oxygen dropped to " + gameStats.oxygen + "%, and radiation exposure increased.";
-  }
-);
-} else {
-  eventTextView.innerText = "All systems normal. No active threats detected near Mars orbit.";
-}
-  } catch (error) {
-    console.error("Error fetching NASA data:", error);
-    eventTextView.innerText = "Error fetching NASA data. Please try again later.";
+    if (btnB) {
+      btnB.onclick = function() {
+        if (choiceContainer) choiceContainer.classList.add("hidden");
+        if (callbackB) callbackB();
+      };
+    }
   }
 
+  function showContinueButton(nextCallback) {
+    const continueContainer = document.getElementById("continue-container");
+    const continueBtn = document.getElementById("continue-btn");
 
+    if (continueContainer) continueContainer.classList.remove("hidden");
 
-// --- DECISION ENGINE ---
-function triggerEmergency(emergencyMessage, choiceAText, choiceBText, callbackA, callbackB) {
-  const eventTextView = document.getElementById("event-text");
-  eventTextView.innerHTML = "🚨 **CRISIS ALERT:** " + emergencyMessage;
-
-  const choiceContainer = document.getElementById("choice-container");
-  const btnA = document.getElementById("choice-a-btn");
-  const btnB = document.getElementById("choice-b-btn");
-
-  btnA.innerText = choiceAText;
-  btnB.innerText = choiceBText;
-  choiceContainer.classList.remove("hidden");
-
-  btnA.onclick = function() {
-    choiceContainer.classList.add("hidden");
-    callbackA();
-  };
-
-  btnB.onclick = function() {
-    choiceContainer.classList.add("hidden");
-    callbackB();
-  };
-
-} }
+    if (continueBtn) {
+      continueBtn.onclick = function() {
+        if (continueContainer) continueContainer.classList.add("hidden");
+        if (nextCallback) nextCallback();
+      };
+    }
+  }
+});
