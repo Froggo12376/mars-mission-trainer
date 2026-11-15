@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function finishDayOneCelebration() {
-    setEventText("🎉 <strong>DAY 1 COMPLETE!</strong> You survived your first 3 <span class='glossary-term' data-word='sol'>sols</span> on Mars! Outstanding job, Commander!");
+    setEventText("🎉 <strong>DAY 1 COMPLETE!</strong> You survived your first <span class='glossary-term' data-word='sol'>sol</span> on Mars! Outstanding job, Commander!");
     triggerConfetti();
     
     currentDay = 2;

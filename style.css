@@ -45,45 +45,54 @@ body {
 
 /* --- 2. LOADING SCREEN (Lock text inside the purple dialogue box) --- */
 #loading-screen {  
-    height: 100vh; 
+    min-height: 100vh; 
+    width: 100%;
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
+    box-sizing: border-box;
+    padding: 20px;
+    gap: 15px;
 }
 
 .loading-container {
     position: relative;
-    aspect-ratio: 1000 / 600; 
-    width: min(95vw, 1100px); 
+    aspect-ratio: 907 / 612; 
+    width: min(95vw, 907px); 
     margin: 0 auto;
     background-image: url('images/Loading Screen.png');
-    background-size: contain; 
+    background-size: 100% 100%; 
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 #dialogue-box {
     position: absolute;
-    top: 67%;               /* Pushes text down into the purple box area */
-    left: 8%;               /* Padding from the astronaut portrait side */
-    width: 62%;             /* Restricts width so it doesn't overlap the portrait */
+    top: 63%;               /* Pushes text down into the purple box area */
+    left: 4%;               /* Padding from the astronaut portrait side */
+    width: 72%;             /* Restricts width so it doesn't overlap the portrait */
+    height: 33%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 5px;
 }
 
 #dialogue-box h1 {
-    font-size: 15px;
+    font-size: clamp(11px, 1.5vw, 16px);
     color: #4f1c63;
-    margin: 0 0 4px 0;
+    margin: 0 0 8px 0;
 }
 
 #dialogue-box p {
-    font-size: 13px;      /* Fits multiple lines neatly inside */
-    margin: 3px 0;
-    line-height: 1.25;
+    font-size: clamp(9px, 1.3vw, 14px);      /* Fits multiple lines neatly inside */
+    margin: 4px 0;
+    line-height: 1.4;
     color: #341049;         /* High contrast yellow text */
 }
 
 #command-btn {
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 
