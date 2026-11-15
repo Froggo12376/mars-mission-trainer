@@ -54,7 +54,7 @@ body {
 
 .loading-container {
     position: relative;
-    aspect-ratio: 1000 / 800; 
+    aspect-ratio: 1000 / 600; 
     width: min(95vw, 1100px); 
     margin: 0 auto;
     background-image: url('images/Loading Screen.png');
@@ -64,7 +64,7 @@ body {
 
 #dialogue-box {
     position: absolute;
-    top: 56%;               /* Pushes text down into the purple box area */
+    top: 67%;               /* Pushes text down into the purple box area */
     left: 8%;               /* Padding from the astronaut portrait side */
     width: 62%;             /* Restricts width so it doesn't overlap the portrait */
 }
