@@ -1,12 +1,66 @@
 /* title-screen */
 #title-screen {   /* Target ID */
-  height: 100vh; /* forces box  to stretch = fill 100% of screens vertical height */
-  display: flex; /* enables flexbox layout = powerfull tool that makes aligning items super easy*/
+    height: 100vh; /* forces box  to stretch = fill 100% of screens vertical height */
+    display: flex; /* enables flexbox layout = powerfull tool that makes aligning items super easy*/
     flex-direction: column; /* makes items stack vertically instead of horizontally */
     align-items: center; /* centers items horizontally */
     justify-content: center; /* centers items vertically */
     background-color: #263353; /* dark background for space theme */
     color: #fdf9be; /* bright text color for contrast */
+}
+
+#loading-screen {  /* Target ID */
+    height: 100vh; /* forces box  to stretch = fill 100% of screens vertical height */
+    display: flex; /* enables flexbox layout = powerfull tool that makes aligning items super easy*/
+    flex-direction: column; /* makes items stack vertically instead of horizontally */
+    align-items: center; /* centers items horizontally */
+    justify-content: center; /* centers items vertically */
+    background-color: #263353; /* dark background for space theme */
+    color: #fdf9be; /* bright text color for contrast */
+}
+
+/* Styling for the loading PNG */
+#loading-container {
+    position: relative; /* allows for absolute positioning of child elements */
+    width: 100%; 
+    max-width: 800px;
+}
+
+*/ Styling for the loading PNG */
+.loading-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block; /* Prevents tiny layout gaps under the image */
+}
+
+#dialogue-box {
+    position: absolute; /* allows for absolute positioning */
+    bottom: 8%; /*Moves text to purple*/
+    left: 6%; /*Moves text to purple*/
+    right: 6%; /*Moves text to purple*/
+    text-align: left;
+}
+
+.dialogue-box p {
+  font-size: 13px;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+#command-btn {
+  margin-top: 10px;
+  background-color: #ebeae4af; 
+  color: #0b0f19; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 10px 20px; 
+  font-size: 14px; 
+  cursor: pointer; 
+}
+
+#command-btn:hover {
+  background-color: #505fb6; 
 }
 
 /* Styling of start button to look clickable*/
