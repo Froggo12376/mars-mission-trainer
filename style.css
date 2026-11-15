@@ -14,7 +14,7 @@ body {
 
 /* --- 1. TITLE SCREEN (Make everything bigger) --- */
 #title-screen {   
-    height: 100vh; 
+    height: 800px;
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -23,11 +23,12 @@ body {
 }
 
 #title-screen img {
-    width: 850px;           /* Scaled up from tiny */
-    max-width: 95vw;
+    width: 800px !important;   /* Forces the image to expand */
+    max-width: 90vw;           /* Keeps it from overflowing mobile screens */
+    height: auto;              /* Keeps the pixel art proportions correct */
     border-radius: 12px;
     margin-bottom: 25px;
-    image-rendering: pixelated;
+    image-rendering: pixelated; /* Keeps pixel art looking sharp when scaled up */
 }
 
 #title-screen h1 {
