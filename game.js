@@ -326,6 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function triggerGameOver(reasonText) {
     const gameOverModal = document.getElementById("game-over-modal");
     const commandCenterScreen = document.getElementById("command-page"); 
+    const defModal = document.getElementById("def-modal");
     const reasonEl = document.getElementById("game-over-reason");
     const restartBtn = document.getElementById("restart-btn");
 
@@ -334,6 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gameOverModal.style.display = "flex"; // Forces it to show instantly!
       commandCenterScreen.classList.add("hidden");
       gameOverModal.classList.remove("hidden");
+      defModal.classList.add("hidden");
     }
 
     if (restartBtn) {
