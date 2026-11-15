@@ -76,7 +76,6 @@ window.onload = fetchSpaceWeatherUpdates;
 
 //Fetch API data and display it on the command center screen
 checkMarsWeather();
-
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 // --- EXISTING CODE (Just add the one line inside commandCenterButton) ---
 commandCenterButton.addEventListener("click", function () {
