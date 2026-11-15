@@ -1,14 +1,79 @@
 /* --- GLOBAL STYLES --- */
-body {
-    background-color: #263353; 
-    color: #fdf9be; 
-    font-family: monospace;
+html, body {
     margin: 0;
-    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    color: #f4edff;
+    font-family: monospace;
+    background: radial-gradient(ellipse at 50% 35%, rgba(104, 67, 158, 0.30), transparent 45%), linear-gradient(180deg, #02040b 0%, #080d1e 30%, #171333 65%, #29204b 100%);
+    background-attachment: fixed; 
+    background-size: 100% 100%, 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    isolation: isolate;
+    overflow-x: hidden;
 }
 
 .hidden {
-    display: none !important; 
+    display: none !important;
+}
+
+/* --- STARS --- */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: 
+        radial-gradient(1px 1px at 12% 38%, #ffffff 98%, transparent), 
+        radial-gradient(1px 1px at 37% 17%, #dce6ff 98%, transparent), 
+        radial-gradient(1px 1px at 69% 12%, #ffffff 98%, transparent), 
+        radial-gradient(1px 1px at 88% 25%, #cbd8ff 98%, transparent), 
+        radial-gradient(1px 1px at 24% 34%, #ffffff 98%, transparent),
+        radial-gradient(1px 1px at 54% 42%, #dce6ff 98%, transparent),
+        radial-gradient(1px 1px at 78% 48%, #ffffff 98%, transparent),
+        radial-gradient(1px 1px at 9% 61%, #dce6ff 98%, transparent),
+        radial-gradient(1px 1px at 44% 72%, #ffffff 98%, transparent),
+        radial-gradient(1px 1px at 91% 83%, #dce6ff 98%, transparent),
+        radial-gradient(1px 1px at 63% 93%, #ffffff 98%, transparent);
+    background-size: 193px 211px, 257px 239px, 311px 281px, 229px 307px, 337px 263px;
+    background-repeat: repeat;
+    opacity: 0.7;
+    animation: distantStars 100s linear infinite;
+    width: 100%;
+    height: 100%;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: 
+        radial-gradient(1.5px 1.5px at 30px 50px, #ffffff 98%, transparent),
+        radial-gradient(2px 2px at 150px 180px, #d9c5ff 98%, transparent),
+        radial-gradient(1.5px 1.5px at 240px 90px, #ffffff 98%, transparent),
+        radial-gradient(2px 2px at 90px 260px, #e0d6ff 98%, transparent),
+        radial-gradient(1px 1px at 290px 310px, #ffffff 98%, transparent);
+    background-size: 350px 370px;
+    background-repeat: repeat;
+    opacity: 0.8;
+    animation: nearbyStars 55s linear infinite;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes distantStars {
+    from {transform: translate3d(0, 0, 0);} to {transform: translate3d(-25px, 120px, 0);}
+}
+
+@keyframes nearbyStars {
+    from {transform: translate3d(0, 0, 0);} to {transform: translate3d(35px, 220px, 0);}
 }
 
 
