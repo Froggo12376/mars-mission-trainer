@@ -420,3 +420,25 @@ window.goToCommandCenter = function() {
   updateResourceDisplay();
   startCurrentDayCrisis();
 };
+
+// --- CRISIS TRIGGER ---
+window.forceStartCrisis = function() {
+  const loadingScreen = document.getElementById("loading-screen");
+  const commandCenterScreen = document.getElementById("command-page");
+
+  if (loadingScreen) loadingScreen.classList.add("hidden");
+  if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
+
+  updateResourceDisplay();
+  
+  // Force day 1, step 1 and trigger the solar storm crisis directly
+  currentDay = 1;
+  crisisStep = 1;
+  
+  if (typeof triggerSolarStormCrisis === "function") {
+    triggerSolarStormCrisis();
+    console.log("Crisis forced successfully!");
+  } else {
+    console.error("triggerSolarStormCrisis function not found!");
+  }
+};

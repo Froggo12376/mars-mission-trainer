@@ -84,21 +84,19 @@
  <!-- Retro Event Terminal -->
 <div class="terminal-box">
   <h3>MISSION LOG</h3>
-  <p id="event-text"></p> <!-- Left blank so it only shows your real crisis messages! -->
+  <p id="event-text"></p>
+
+  <!-- Choice Container (Must be here so A/B choices show up!) -->
+  <div id="choice-container" class="hidden" style="margin-top: 22px; display: flex; gap: 15px;">
+    <button id="choice-a-btn" class="choice-btn">Option A</button>
+    <button id="choice-b-btn" class="choice-btn">Option B</button>
+  </div>
+
+  <!-- Continue Button for Next Crisis -->
+  <div id="continue-container" class="hidden" style="margin-top: 15px;">
+    <button id="continue-btn" class="choice-btn" style="width: 100%;">CONTINUE MISSION</button>
+  </div>
 </div>
-
-      <!-- Choice Container -->
-      <div id="choice-container" class="hidden">
-        <button id="choice-a-btn" class="choice-btn">Option A</button>
-        <button id="choice-b-btn" class="choice-btn">Option B</button>
-      </div>
-
-      <!-- Continue Button for Next Crisis -->
-      <div id="continue-container" class="hidden" style="margin-top: 15px;">
-        <button id="continue-btn" class="choice-btn" style="width: 100%;">CONTINUE MISSION</button>
-      </div>
-    </div> 
-  </div> 
 
   <!-- Vocabulary Definition Popup Box -->
   <div id="def-modal" class="hidden" style="background: rgba(15, 23, 42, 0.95); border: 2px solid #38bdf8; padding: 15px; border-radius: 8px; margin-top: 15px;">
