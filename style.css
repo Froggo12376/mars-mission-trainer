@@ -395,3 +395,22 @@ button:hover {
     z-index: 9998;
     margin: 0;
 }
+
+/* button sits above everything and captures mouse clicks */
+#open-api-table-btn {
+  position: relative;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+/* header container doesn't block clicks */
+.dashboard-header {
+  position: relative;
+  z-index: 10;
+}
+
+/* modal overlay covers everything when active */
+#api-table-modal {
+  z-index: 999999 !important;
+}

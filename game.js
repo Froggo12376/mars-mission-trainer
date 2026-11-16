@@ -349,46 +349,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  
-
-movingDate()
-
-const tableDates = {
-    1: "10/17/2026", // Day 1 date from table
-    2: "10/20/2026"  // Day 2 date from table
-  };
-
-  function updateHeaderDate() {
-    const dateDisplay = document.getElementById("nasa-date-display");
-    if (dateDisplay) {
-      dateDisplay.innerText = tableDates[currentDay] || "10/17/2026";
-    }
-  }
-
- // --- NASA TABLE MODAL TOGGLE ---
-const openTableBtn = document.getElementById("open-api-table-btn");
-const closeXBtn = document.getElementById("close-x-btn");
-const tableModal = document.getElementById("api-table-modal");
-
-if (openTableBtn) {
-  openTableBtn.onclick = function() {
-    if (tableModal) {
-      tableModal.style.display = "flex";
-    }
-  };
-}
-
-if (closeXBtn) {
-  closeXBtn.onclick = function() {
-    if (tableModal) {
-      tableModal.style.display = "none";
-    }
-  };
-}
-
-// Close if clicking outside the modal box
-window.onclick = function(event) {
-  if (event.target === tableModal) {
-    tableModal.style.display = "none";
-  }
+ const tableDates = {
+  1: "10/17/2026", // Day 1 date from table
+  2: "10/20/2026"  // Day 2 date from table
 };
+
+function updateHeaderDate() {
+  const dateDisplay = document.getElementById("nasa-date-display");
+  if (dateDisplay) {
+    dateDisplay.innerText = tableDates[currentDay] || "10/17/2026";
+  }
+}
+
+// --- OPEN & CLOSE NASA TABLE MODAL ---
+const openBtn = document.getElementById("open-api-table-btn");
+const closeBtn = document.getElementById("close-x-btn");
+const modal = document.getElementById("api-table-modal");
+
+if (openBtn && modal) {
+  openBtn.onclick = function() {
+    modal.style.display = "flex";
+  };
+}
+
+if (closeBtn && modal) {
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  };
+}
