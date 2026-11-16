@@ -425,7 +425,7 @@ button:hover {
 
 #def-modal {
     position: fixed;
-    bottom: 90px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     width: min(1000px, 85%);
@@ -451,11 +451,4 @@ button:hover {
 /* modal overlay covers everything when active */
 #api-table-modal {
   z-index: 999999 !important;
-}
-
-/* Force choice container and event text to show when active */
-#choice-container:not(.hidden), 
-#event-text:not(:empty) {
-  display: flex !important;
-  visibility: visible !important;
 }
