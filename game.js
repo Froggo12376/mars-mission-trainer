@@ -20,11 +20,37 @@ document.addEventListener("DOMContentLoaded", function () {
     "sol": "The word scientists use for a single day on Mars (it's about 39 minutes longer than an Earth day!)."
   };
 
+  // --- RESOURCE METER COLOR FUNCTION ---
+  function updateMeterColor(bar, value, isRadiation = false) {
+    if (!bar) return;
+    bar.classList.remove("safe", "warning", "danger");
+    if (isRadiation) {
+      if (value < 40) {
+        bar.classList.add("safe");
+      } else if (value < 70) {
+        bar.classList.add("warning");
+      } else {
+        bar.classList.add("danger");
+      }
+    } else {
+      if (value > 60) {
+        bar.classList.add("safe");
+      } else if (value > 30) {
+        bar.classList.add("warning");
+      } else {
+        bar.classList.add("danger");
+      }
+    }
+  }
+
   // --- UPDATE UI FUNCTION ---
   function updateResourceDisplay() {
     const oxyEl = document.getElementById("oxygen-text");
     const powEl = document.getElementById("power-text");
     const radEl = document.getElementById("radiation-text");
+    const oxygenBar = document.getElementById("oxygen-bar");
+    const powerBar = document.getElementById("power-bar");
+    const radiationBar = document.getElementById("radiation-bar");
 
     if (oxyEl) oxyEl.innerText = gameStats.oxygen + "%";
     if (powEl) powEl.innerText = gameStats.power + "%";
