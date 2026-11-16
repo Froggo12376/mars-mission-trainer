@@ -258,6 +258,30 @@ body::after {
     background: #f87171;
 }
 
+.oxygen-fill.safe, .power-fill.safe {
+    background: #4ade80;
+}
+
+.oxygen-fill.warning, .power-fill.warning {
+    background: #facc15;
+}
+
+.oxygen-fill.danger, .power-fill.danger {
+    background: #f87171;
+}
+
+.radiation-fill.safe {
+    background: #4ade80;
+}
+
+.radiation-fill.warning {
+    background: #facc15;
+}
+
+.radiation-fill.danger {
+    background: #f87171;
+}
+
 .terminal-box {
     background-color: rgba(8, 12, 28, 0.95);
     border: 2px solid #55e6d0;
