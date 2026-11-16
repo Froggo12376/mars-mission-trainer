@@ -211,9 +211,9 @@ body::after {
 }
 
 .resource-card {
-    background: linear-gradient(145deg, rgba(76, 43, 112, 0.95), rgba(35, 27, 68, 0.95));
-    padding: 22px 15px; 
-    border: 2px solid #9b7bd1;
+    background: linear-gradient(145deg, rgba(35, 32, 65, 0.95), rgba(15, 23, 42, 0.95));
+    padding: 20px 18px; 
+    border: 2px solid #8064bd;
     border-radius: 12px; 
     font-size: 17px;       /* Bigger resource stats */
     font-weight: bold;
