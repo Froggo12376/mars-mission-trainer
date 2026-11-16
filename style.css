@@ -173,7 +173,7 @@ body::after {
     text-align: center;
     padding: 45px 20px;
     gap: 20px;
-    min-height: 100vh;
+    min-height: 55vh;
     width: 100%;
     box-sizing: border-box;
 }
