@@ -360,3 +360,8 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 movingDate()
+
+const dayDates = {
+    1: "10/17/2026", // Day 1 date from their table (CME)
+    2: "10/20/2026"  // Day 2 date from their table (ENLIL/ICME)
+  };
