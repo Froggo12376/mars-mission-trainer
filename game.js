@@ -364,3 +364,31 @@ const tableDates = {
       dateDisplay.innerText = tableDates[currentDay] || "10/17/2026";
     }
   }
+
+ // --- NASA TABLE MODAL TOGGLE ---
+const openTableBtn = document.getElementById("open-api-table-btn");
+const closeXBtn = document.getElementById("close-x-btn");
+const tableModal = document.getElementById("api-table-modal");
+
+if (openTableBtn) {
+  openTableBtn.onclick = function() {
+    if (tableModal) {
+      tableModal.style.display = "flex";
+    }
+  };
+}
+
+if (closeXBtn) {
+  closeXBtn.onclick = function() {
+    if (tableModal) {
+      tableModal.style.display = "none";
+    }
+  };
+}
+
+// Close if clicking outside the modal box
+window.onclick = function(event) {
+  if (event.target === tableModal) {
+    tableModal.style.display = "none";
+  }
+};
