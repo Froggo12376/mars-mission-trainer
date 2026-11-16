@@ -37,7 +37,7 @@
   <div id="command-page" class="hidden">
     <header class="dashboard-header">
       <h1>Mars Outpost</h1>
-      <p>Welcome, <span id="cadet-name">Junior</span> | <span style="color: #4ade80; font-weight: bold;">DAY <span id="day-num">1</span>: <span id="nasa-date-display">10/17/2026</span></span> | Crisis <span id="crisis-num">1</span> of 3</p>
+      <p>Welcome, <span id="cadet-name">Junior</span> | <span>DAY <span id="day-num">1</span>: <span id="nasa-date-display">10/17/2026</span></span> | Crisis <span id="crisis-num">1</span> of 3</p>
       <p>Mission Status: <span id="mission-status">Active</span></p>
 
       <!-- Button to Open NASA API Table -->
@@ -88,24 +88,24 @@
   <p id="event-text"></p>
 
   <!-- Choice Buttons for Player Decisions -->
- <div id="choice-container" class="hidden" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
-    <button id="choice-a-btn" class="choice-btn" style="width: 100%; text-align: left;"></button>
-    <button id="choice-b-btn" class="choice-btn" style="width: 100%; text-align: left;"></button>
+ <div id="choice-container" class="hidden">
+    <button id="choice-a-btn" class="choice-btn"></button>
+    <button id="choice-b-btn" class="choice-btn"></button>
   </div>
 
   
 
   <!-- Continue Button for Next Step -->
-  <div id="continue-container" class="hidden" style="margin-top: 15px;">
-    <button id="continue-btn" class="choice-btn" style="width: 100%;">CONTINUE MISSION</button>
+  <div id="continue-container" class="hidden">
+    <button id="continue-btn" class="choice-btn">CONTINUE MISSION</button>
   </div>
 </div>
 
   <!-- Vocabulary Definition Popup Box -->
-  <div id="def-modal" class="hidden" style="background: rgba(15, 23, 42, 0.95); border: 2px solid #38bdf8; padding: 15px; border-radius: 8px; margin-top: 15px;">
-    <h4 id="def-title" style="color: #38bdf8; margin-top: 0;"></h4>
-    <p id="def-text" style="font-size: 0.9rem; margin-bottom: 10px;"></p>
-    <button id="close-def-btn" class="choice-btn" style="padding: 5px 15px; font-size: 0.8rem;">Close</button>
+  <div id="def-modal" class="hidden">
+    <h4 id="def-title"></h4>
+    <p id="def-text"></p>
+    <button id="close-def-btn" class="choice-btn">Close</button>
   </div>
 
   <!-- Game Over / Failure Modal -->
