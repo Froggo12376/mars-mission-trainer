@@ -323,3 +323,14 @@ button:hover {
 .glossary-term:hover {
   color: #7dd3fc;
 }
+
+#def-modal {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1000px, 85%);
+    box-sizing: border-box;
+    z-index: 9998;
+    margin: 0;
+}
