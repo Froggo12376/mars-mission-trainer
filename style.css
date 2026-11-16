@@ -166,69 +166,93 @@ body::after {
 
 /* --- 3. COMMAND CENTER (Bigger text & cleaner spacing) --- */
 #command-page {
-    height: 60vh; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: center; 
+    justify-content: flex-start; 
     text-align: center;
+    padding: 45px 20px;
+    gap: 20px;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-header {
+    width: min(900px, 95%);
     padding: 20px;
+    box-sizing: border-box;
+    background: rgba(30, 25, 58, 0.85);
+    border: 2px solid #8064bd;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(128, 100, 189, 0.2);
 }
 
 .dashboard-header h1 {
-    font-size: 32px;        /* Big header */
-    margin-bottom: 10px;
+    font-size: clamp(26px, 4vw, 36px);        /* Big header */
+    margin: 0 0 12px;
+    color: #d9c5ff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px rgba(190, 150, 255, 0.5);
 }
 
 .dashboard-header p {
-    font-size: 18px;        /* Larger cadet/status text */
-    margin: 5px 0;
-    color: #a8b2d1;
+    font-size: 15px;        /* Larger cadet/status text */
+    margin: 7px 0;
+    color: #c5c0df;
 }
 
 .resource-panel {
-    display: flex; 
-    gap: 25px; 
-    margin: 20px 0; 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px; 
+    margin: 0; 
+    width: min(900px, 95%);
 }
 
 .resource-card {
-    background-color: #4e2268;
-    padding: 12px 25px; 
-    border: 2px solid #00ffcc;
-    border-radius: 8px; 
-    font-size: 18px;       /* Bigger resource stats */
+    background: linear-gradient(145deg, rgba(76, 43, 112, 0.95), rgba(35, 27, 68, 0.95));
+    padding: 22px 15px; 
+    border: 2px solid #9b7bd1;
+    border-radius: 12px; 
+    font-size: 17px;       /* Bigger resource stats */
     font-weight: bold;
+    box-shadow: 0 0 15px rgba(155, 123, 209, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .terminal-box {
-    background-color: #0b0f19;
-    border: 3px solid #00ffcc;
-    padding: 25px;
-    width: 650px;
+    background-color: rgba(8, 12, 28, 0.95);
+    border: 2px solid #55e6d0;
+    padding: 28px;
+    width: min(850px, 95%);
     max-width: 95%;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: left;
+    box-sizing: border-box;
+    box-shadow: 0 0 25px rgba(85, 230, 208, 0.12);
 }
 
 .terminal-box h3 {
     margin-top: 0;
-    color: #00ffcc;
-    font-size: 18px;
-    border-bottom: 1px solid #00ffcc;
-    padding-bottom: 8px;
+    color: #55e6d0;
+    font-size: 19px;
+    border-bottom: 1px solid rgba(85, 230, 208, 0.5);
+    padding-bottom: 12px;
+    letter-spacing: 2px;
 }
 
 #event-text {
     font-size: 16px;        /* Easy-to-read mission log text */
-    line-height: 1.4;
+    line-height: 1.7;
+    color: #e0e7ff;
 }
 
 #choice-container {
     .hidden {
         display: none !important; 
     }
-    margin-top: 20px;
+    margin-top: 22px;
     display: flex;
     gap: 15px;
 }
@@ -253,12 +277,17 @@ button:hover {
 }
 
 .choice-btn {
-    background-color: #ff5500; 
-    color: #ffffff; 
+    flex: 1;
+    background: #a94f50; 
+    color: #ffffff;
+    border: 1px solid #d47a7b;
+    border-radius: 8px;
+    padding: 13px 18px;
 }
 
 .choice-btn:hover {
-    background-color: #ff7733;
+    background: #ffaa6b;
+    color: #171323;
 }
 
 /* Ego too big confetti */
