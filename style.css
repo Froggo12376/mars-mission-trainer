@@ -304,6 +304,22 @@ body::after {
     background: #f87171;
 }
 
+.resource-status {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin: 10px 0 0;
+    color: #4ade80;
+}
+
+.resource-status.warning {
+    color: #facc15;
+}
+
+.resource-status.danger {
+    color: #f87171;
+}
+
 .terminal-box {
     background-color: rgba(8, 12, 28, 0.95);
     border: 2px solid #55e6d0;
