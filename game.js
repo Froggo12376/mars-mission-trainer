@@ -345,4 +345,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  /* Connect to API */
+  /* DATES */
+  function movingDate() {
+    let month = 10
+    let day = 16
+    for (var i = 0; i < 31; i++) {
+        console.log(month + "/" + day + "/2026")
+        day++;
+        if (day >31)  {
+            month ++;
+            day = 1;
+        }
+    }
+}
+
+movingDate()
