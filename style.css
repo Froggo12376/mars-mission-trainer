@@ -160,9 +160,31 @@ body::after {
 }
 
 #command-btn {
-    margin-top: 0;
+    margin-top: 15px;
+    width: min(340px, 90%);
+    padding: 15px 22px;
+    background: linear-gradient(135deg, #b8e5f5, #7cc9e8);
+    color: #14283b;
+    border: 2px solid #d9f4ff;
+    border-radius: 12px;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight:bold;
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 15px rgba(124, 201, 232, 0.25);
+    transition: all 0.25s ease;
 }
 
+#command-btn:hover {
+    background: linear-gradient(135deg, #d9f4ff, #9cddf5);
+    color: #13283b;
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(124, 201, 232, 0.55);
+}
+
+#command-btn:active {
+    transform: translateY(1px);
+}
 
 /* --- 3. COMMAND CENTER (Bigger text & cleaner spacing) --- */
 #command-page {
