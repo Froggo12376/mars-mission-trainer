@@ -365,16 +365,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 movingDate()
 
-// --- MATCH DATES DIRECTLY FROM YOUR TEAM'S TABLE ---
-  const tableDates = {
-    1: "10/17/2026", // Matches the CME event date from your table
-    2: "10/20/2026"  // Matches the ENLIL/ICME event date from your table
+const tableDates = {
+    1: "10/17/2026", // Day 1 date from table
+    2: "10/20/2026"  // Day 2 date from table
   };
 
   function updateHeaderDate() {
     const dateDisplay = document.getElementById("nasa-date-display");
     if (dateDisplay) {
-      // currentDay tracks whether it's Day 1 or Day 2 in your game loop
       dateDisplay.innerText = tableDates[currentDay] || "10/17/2026";
     }
   }
