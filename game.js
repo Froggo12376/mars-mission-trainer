@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (powEl) powEl.innerText = gameStats.power + "%";
     if (radEl) radEl.innerText = gameStats.radiation + "%";
 
-    document.getElementById("day-display").innerText = `DAY ${currentDay}: Crisis ${crisisStep} of 3`;
+    document.getElementById("day-display").innerText = `DAY ${currentDay}: -- Crisis ${crisisStep} of 3`;
 
         // --- FAIL CONDITION CHECKS ---
     if (gameStats.radiation >= 100) {
@@ -344,3 +344,5 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     }
   }
+
+  /* Connect to API */
