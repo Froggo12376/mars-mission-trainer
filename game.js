@@ -84,18 +84,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const commandCenterButton = document.getElementById("command-btn");
-  const commandCenterScreen = document.getElementById("command-page"); 
+ const commandCenterButton = document.getElementById("command-btn");
+const commandCenterScreen = document.getElementById("command-page");
 
-  if (commandCenterButton) {
-    commandCenterButton.addEventListener("click", function () {
-      if (loadingScreen) loadingScreen.classList.add("hidden"); 
-      if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
+if (commandCenterButton) {
+  commandCenterButton.addEventListener("click", function () {
+    if (loadingScreen) loadingScreen.classList.add("hidden"); // Make sure it's loadingScreen (no 's')!
+    if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
 
-      updateResourceDisplay();
-      startCurrentDayCrisis();
-    });
-  }
+    updateResourceDisplay();
+    startCurrentDayCrisis();
+  });
+}
 
   // --- DAY & CRISIS ROUTER ---
   function startCurrentDayCrisis() {
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
  const tableDates = {
   1: "10/17/2026", // Day 1 date from table
-  2: "10/20/2026"  // Day 2 date from table
+  2: "10/16/2026"  // Day 2 date from table
 };
 
 function updateHeaderDate() {
@@ -403,3 +403,20 @@ if (closeBtn && modal) {
     modal.style.display = "none";
   };
 }
+
+// --- COMMAND CENTER LOADER ---
+window.goToCommandCenter = function() {
+  const loadingScreen = document.getElementById("loading-screen");
+  const commandCenterScreen = document.getElementById("command-page");
+
+  if (loadingScreen) {
+    loadingScreen.classList.add("hidden");
+  }
+  
+  if (commandCenterScreen) {
+    commandCenterScreen.classList.remove("hidden");
+  }
+
+  updateResourceDisplay();
+  startCurrentDayCrisis();
+};
