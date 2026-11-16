@@ -28,8 +28,12 @@
         <p>You'll need to make smart decisions on your own and keep yourself safe. You're the boss out there! </p> 
       </div>
     </div>
-   <button id="command-btn" onclick="goToCommandCenter()">GO TO COMMAND CENTER</button>
+   
   </div>
+
+  <button id="command-btn" class="choice-btn" style="margin-top: 15px; width: min(320px, 90%);">GO TO COMMAND CENTER</button>
+
+</div>
 
  <!-- Command Center -->
   <div id="command-page" class="hidden">
@@ -77,11 +81,12 @@
     </div>
   </div>
     
-  <!-- Retro Event Terminal -->
-    <div class="terminal-box">
-      <h3>MISSION LOG</h3>
-      <p id="event-text">Connecting to NASA telemetry network...</p>
-      
+ <!-- Retro Event Terminal -->
+<div class="terminal-box">
+  <h3>MISSION LOG</h3>
+  <p id="event-text"></p> <!-- Left blank so it only shows your real crisis messages! -->
+</div>
+
       <!-- Choice Container -->
       <div id="choice-container" class="hidden">
         <button id="choice-a-btn" class="choice-btn">Option A</button>

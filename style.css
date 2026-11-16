@@ -109,16 +109,16 @@ body::after {
 
 
 /* --- 2. LOADING SCREEN (Lock text inside the purple dialogue box) --- */
-#loading-screen {  
-    min-height: 100vh; 
-    width: 100%;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    box-sizing: border-box;
-    padding: 20px;
-    gap: 15px;
+#loading-screen {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Keeps everything perfectly centered horizontally */
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 20px;
+  gap: 15px;
 }
 
 .loading-container {

@@ -89,11 +89,11 @@ const commandCenterScreen = document.getElementById("command-page");
 
 if (commandCenterButton) {
   commandCenterButton.addEventListener("click", function () {
-    if (loadingScreen) loadingScreen.classList.add("hidden"); // Make sure it's loadingScreen (no 's')!
+    if (loadingScreen) loadingScreen.classList.add("hidden");
     if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
 
     updateResourceDisplay();
-    startCurrentDayCrisis();
+    startCurrentDayCrisis(); // This fires your original crisis questions instantly!
   });
 }
 
