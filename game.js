@@ -92,8 +92,11 @@ if (commandCenterButton) {
     if (loadingScreen) loadingScreen.classList.add("hidden");
     if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
 
+    currentDay = 1;     
+    crisisStep = 1;     
+
     updateResourceDisplay();
-    startCurrentDayCrisis(); // Fires your pre-coded crisis right into the mission box!
+    startCurrentDayCrisis(); 
   });
 }
 
