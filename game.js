@@ -1,3 +1,11 @@
+// --- GLOBAL GAME STATE ---
+let currentDay = 1;
+let crisisStep = 1;
+let gameStats = {
+  oxygen: 100,
+  power: 100,
+  radiation: 10
+};
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Mars Outpost script loaded successfully!");
 
@@ -92,9 +100,11 @@ if (commandCenterButton) {
     if (loadingScreen) loadingScreen.classList.add("hidden");
     if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
 
-    currentDay = 1;     
-    crisisStep = 1;     
+    // 1. Initialize your game state variables so the router never fails
+    currentDay = 1;
+    crisisStep = 1;
 
+    // 2. Refresh meters and fire your pre-coded crisis questionnaire
     updateResourceDisplay();
     startCurrentDayCrisis(); 
   });
@@ -294,7 +304,10 @@ if (commandCenterButton) {
     const btnB = document.getElementById("choice-b-btn");
 
     if (continueContainer) continueContainer.classList.add("hidden");
-    if (choiceContainer) choiceContainer.classList.remove("hidden");
+    if (choiceContainer) {
+  choiceContainer.style.display = "flex";
+  choiceContainer.classList.remove("hidden");
+}
 
     if (btnA) btnA.innerText = choiceAText;
     if (btnB) btnB.innerText = choiceBText;
