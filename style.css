@@ -414,3 +414,10 @@ button:hover {
 #api-table-modal {
   z-index: 999999 !important;
 }
+
+/* Force choice container and event text to show when active */
+#choice-container:not(.hidden), 
+#event-text:not(:empty) {
+  display: flex !important;
+  visibility: visible !important;
+}
