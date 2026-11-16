@@ -68,7 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("power-bar").style.width = Math.max(0, Math.min(100, gameStats.power)) + "%";
     document.getElementById("radiation-bar").style.width = Math.max(0, Math.min(100, gameStats.radiation)) + "%";
 
-    document.getElementById("day-display").innerText = `DAY ${currentDay}: -- Crisis ${crisisStep} of 3`;
+    // Update Day & Crisis in the header safely
+    const dayNumEl = document.getElementById("day-num");
+    const crisisNumEl = document.getElementById("crisis-num");
+    if (dayNumEl) dayNumEl.innerText = currentDay;
+    if (crisisNumEl) crisisNumEl.innerText = crisisStep;
 
         // --- FAIL CONDITION CHECKS ---
     if (gameStats.radiation >= 100) {
