@@ -30,6 +30,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (powEl) powEl.innerText = gameStats.power + "%";
     if (radEl) radEl.innerText = gameStats.radiation + "%";
 
+    document.getElementById("oxygen-bar").style.width = Math.max(0, Math.min(100, gameStats.oxygen)) + "%";
+    document.getElementById("power-bar").style.width = Math.max(0, Math.min(100, gameStats.power)) + "%";
+    document.getElementById("radiation-bar").style.width = Math.max(0, Math.min(100, gameStats.radiation)) + "%";
+
     document.getElementById("day-display").innerText = `DAY ${currentDay}: -- Crisis ${crisisStep} of 3`;
 
         // --- FAIL CONDITION CHECKS ---
