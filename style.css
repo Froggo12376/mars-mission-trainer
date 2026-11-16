@@ -215,10 +215,47 @@ body::after {
     padding: 20px 18px; 
     border: 2px solid #8064bd;
     border-radius: 12px; 
-    font-size: 17px;       /* Bigger resource stats */
+    font-size: 15px;       /* Bigger resource stats */
     font-weight: bold;
-    box-shadow: 0 0 15px rgba(155, 123, 209, 0.15);
+    box-shadow: 0 0 15px rgba(128, 100, 189, 0.15);
     transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.resource-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    color: #e0e7ff;
+}
+
+.meter-background {
+    width: 100%;
+    height: 13px;
+    background: #263047;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.meter-fill {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.oxygen-fill {
+    background: #4ade80;
+}
+
+.power-fill {
+    background: #38dbf8;
+}
+
+.radiation-fill {
+    background: #f87171;
 }
 
 .terminal-box {
