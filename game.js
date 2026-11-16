@@ -73,18 +73,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- SCREEN SWITCHING LOGIC ---
-  const startButton = document.getElementById("start-btn");
-  const titleScreen = document.getElementById("title-screen");
-  const loadingScreen = document.getElementById("loading-screen");
+const startButton = document.getElementById("start-btn");
+const titleScreen = document.getElementById("title-screen");
+const loadingScreen = document.getElementById("loading-screen");
 
-  if (startButton) {
-    startButton.addEventListener("click", function () {
-      if (titleScreen) titleScreen.classList.add("hidden"); 
-      if (loadingScreen) loadingScreen.classList.remove("hidden"); 
-    });
-  }
+if (startButton) {
+  startButton.addEventListener("click", function () {
+    if (titleScreen) titleScreen.classList.add("hidden");
+    if (loadingScreen) loadingScreen.classList.remove("hidden");
+  });
+}
 
- const commandCenterButton = document.getElementById("command-btn");
+const commandCenterButton = document.getElementById("command-btn");
 const commandCenterScreen = document.getElementById("command-page");
 
 if (commandCenterButton) {
@@ -93,7 +93,7 @@ if (commandCenterButton) {
     if (commandCenterScreen) commandCenterScreen.classList.remove("hidden");
 
     updateResourceDisplay();
-    startCurrentDayCrisis(); // This fires your original crisis questions instantly!
+    startCurrentDayCrisis(); // Fires your pre-coded crisis right into the mission box!
   });
 }
 
